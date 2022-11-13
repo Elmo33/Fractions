@@ -1,3 +1,9 @@
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     static int disc(int a, int b, int c){
         return (int)Math.pow(b, 2) - (4*a*c);
@@ -11,29 +17,44 @@ public class Main {
         }
         return shortest;
     }
-    public static void main(String[] args) {
 
-        System.out.println("Hello world!");
-        int a = 2;
-        int b = 3;
-        int c = 4;
-        String[] idk = {"xachapuri", "nigvziani badrijani", "yiyliyo", "soko"};
-        System.out.println(disc(a,b,c));
-        System.out.println(shortest(idk));
+    static double average(Integer[] numbers){
+//        List<Integer> above150 = new ArrayList<>();
+        double sum = 0;
+        int x = 0;
+        for (Integer i : numbers)
+            if (i>150){
+                sum += i;
+                x ++;
+            }
+        return sum/x;
+    }
 
-        Fraction test = new Fraction();
-        test.numerator = 5;
-        test.denominator = 10;
-        Fraction reduced = test.reduce();
+    static float geometricMean(Integer[] arr)
+    {
+        int n = arr.length;
+        float product = 1;
+        for (Integer integer : arr) product *= integer;
+        return (float)Math.pow(product, (float)1 / n);
+    }
+    public static void main(String[] args) throws ParserConfigurationException, TransformerException, IOException {
 
-        Fraction test2 = new Fraction();
-        test2.numerator = 1;
-        test2.denominator = 5;
+        Integer[] nums = {200,300,250,42, 125};
+        System.out.println(average(nums));
+        System.out.println(geometricMean(nums));
 
-        Fraction added = test.add(test2);
-        System.out.println(added.numerator);
-        System.out.println(added.denominator);
+        Department a = new Department();
+        a.numerator = 0;
+        a.denominator = 5;
+        Department b = new Department();
+        b.numerator = 2;
+        b.denominator = 5;
+        System.out.println(a.equals(b));
 
+        Xml.createXml();
 
+        File write = new File();
+        write.write();
     }
 }
+
